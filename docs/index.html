@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Second Cerveau</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <form id="lock" hidden>
+    <h1>Second Cerveau</h1>
+    <input id="password" type="password" placeholder="Mot de passe" autocomplete="current-password" aria-label="Mot de passe">
+    <button type="submit">Déverrouiller</button>
+    <p id="error" role="alert"></p>
+  </form>
+
+  <main id="app" hidden>
+    <section class="tiles" id="tiles"></section>
+
+    <section class="card wide">
+      <h2>Régularité</h2>
+      <p class="sub">Score quotidien sur 12 mois</p>
+      <div id="heatmap" class="scroll"></div>
+    </section>
+
+    <section class="card">
+      <h2>Score des 30 derniers jours</h2>
+      <div id="score"></div>
+    </section>
+
+    <section class="card">
+      <h2>Réussite par habitude</h2>
+      <p class="sub">30 derniers jours</p>
+      <div id="habits"></div>
+    </section>
+
+    <section class="card">
+      <div class="head">
+        <h2>Progression par exercice</h2>
+        <select id="exercise" aria-label="Exercice"></select>
+      </div>
+      <div id="progress"></div>
+    </section>
+
+    <section class="card">
+      <h2>Volume par groupe</h2>
+      <p class="sub">30 derniers jours, en kg</p>
+      <div id="volume"></div>
+    </section>
+
+    <section class="card">
+      <h2>Course</h2>
+      <p class="sub">Distance par semaine, en km</p>
+      <div id="running"></div>
+    </section>
+
+    <section class="card">
+      <h2>Records</h2>
+      <div id="records"></div>
+    </section>
+
+    <section class="card wide">
+      <h2>Objectifs</h2>
+      <div id="goals" class="goals"></div>
+    </section>
+
+    <p class="foot" id="updated"></p>
+  </main>
+
+  <div id="tooltip" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>
