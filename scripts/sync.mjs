@@ -20,7 +20,7 @@ const STREAK_MIN_SCORE = 80;
 const JOURS_JOURNAL_AVANCE = 14;
 const JOURS_SEANCE_AVANCE = 7;
 // getUTCDay : 0 = dimanche
-const PROGRAMME_PAR_JOUR = { 3: "Jambes & Dos", 5: "Pectoraux & Triceps", 0: "Épaules & Biceps" };
+const PROGRAMME_PAR_JOUR = { 1: "Jambes", 2: "Pec Dos", 3: "Épaules & Biceps", 5: "Pec Triceps" };
 const MOIS = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
 
 async function notion(path, method = "GET", body) {
@@ -109,7 +109,7 @@ async function ensureSeances(seances, performances, exercices, now) {
         Type: { select: { name: "Muscu" } },
       },
     });
-    for (const ex of exercices.filter((e) => e.properties.Programme.select?.name === programme)) {
+    for (const ex of exercices.filter((e) => e.properties["Séances type"].multi_select.some((o) => o.name === programme))) {
       const charge = derniere.get(ex.id)?.charge ?? ex.properties["Charge cible"].number;
       await notion("pages", "POST", {
         parent: { database_id: DB.performances },
